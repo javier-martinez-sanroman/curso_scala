@@ -1,0 +1,40 @@
+services:
+  spark-master:
+    image: bitnamilegacy/spark:latest
+    container_name: spark-master
+    environment:
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    ports:
+      - "8080:8080" # Spark UI Master
+      - "7077:7077" # Spark Master Port
+    networks:
+      - spark-net
+
+  spark-worker:
+    image: bitnamilegacy/spark:latest
+    #container_name: spark-worker
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_MEMORY=2G
+      - SPARK_WORKER_CORES=2
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+    volumes:
+      - ./data:/opt/spark/data # Para compartir datos locales
+    networks:
+      - spark-net
+    deploy:
+      replicas: 4 # Número de workers
+
+networks:
+  spark-net:
+    driver: bridge
