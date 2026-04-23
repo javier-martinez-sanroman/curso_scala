@@ -1,0 +1,69 @@
+services:
+  spark-master:
+    image: apache/spark:4.1.1-scala2.13-java17-python3-ubuntu
+    container_name: spark-master
+    hostname: spark-master
+    user: root
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    environment:
+      - SPARK_HOME=/opt/spark
+      - HADOOP_HOME=/opt/spark/hadoop # Spark oficial incluye Hadoop aquí
+    networks:
+      - spark-network
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.master.Master --host spark-master --port 7077 --webui-port 8080
+
+  spark-worker:
+    image: apache/spark:4.1.1-scala2.13-java17-python3-ubuntu
+    depends_on:
+      - spark-master
+    user: root
+    environment:
+      - SPARK_MASTER_URL=spark://spark-master:7077
+    networks:
+      - spark-network
+    command: >
+      /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
+
+
+  jupyter-almond:
+    # image: almondsh/almond:latest
+    build: .
+    container_name: jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - SPARK_MASTER=spark://spark-master:7077
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./data:/home/jovyan/data
+    depends_on:
+      - spark-master
+    networks:
+      - spark-network
+    command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''  
+
+
+  # Contenedor de Jupyter con Kernel de Scala (Almond)
+  # jupyter-scala:
+  #   image: almondsh/almond:latest
+  #   container_name: jupyter_scala
+  #   ports:
+  #     - "8888:8888"
+  #   volumes:
+  #     - ./notebooks:/home/jovyan/work
+  #     - ./data:/home/jovyan/data
+  #   networks:
+  #     - spark-network
+  #   environment:
+  #     - JUPYTER_ENABLE_LAB=yes
+  #     - SPARK_MASTER=spark://spark-master:7077
+  #   # command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
+  #   command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+
+networks:
+  spark-network:
+    driver: bridge
