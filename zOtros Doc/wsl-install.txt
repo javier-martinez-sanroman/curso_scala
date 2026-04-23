@@ -1,0 +1,153 @@
+#  Instalar Ubuntu 22.04 desde PowerShell
+wsl --install -d Ubuntu-22.04
+
+
+# Actualizar los paquetes de Ubuntu
+sudo apt update && sudo apt upgrade -y
+mkdir -p ~/Curso-Scala
+
+#  Instalar Java JDK 17 en WSL (Ubuntu)
+sudo apt install -y openjdk-17-jdk
+java -version
+# Salida esperada:
+# openjdk version "17.x.x" 202x-xx-xx
+# OpenJDK Runtime Environment (build 17.x.x+x-Ubuntu-...)
+# OpenJDK 64-Bit Server VM (build 17.x.x+x-Ubuntu-..., mixed mode, sharing)
+
+javac -version
+# Salida esperada: javac 17.x.x
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> ~/.bashrc
+echo 'export PATH=$JAVA_HOME/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+echo $JAVA_HOME
+echo $PATH
+# Salida: /usr/lib/jvm/java-17-openjdk-amd64
+
+#  Instalar sbt en WSL (Ubuntu)
+sudo apt install -y apt-transport-https curl gnupg
+echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
+curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
+
+sudo apt update
+sudo apt install -y sbt
+
+echo 'export PATH=/usr/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+echo $PATH
+
+sbt --version
+# sbt version in this project: (none)
+# sbt script version: 1.x.x
+
+# en Powershell 
+wsl --list --verbose
+# wsl --set-version Ubuntu-22.04 2
+# wsl --set-default-version 2
+code --version
+# 1.xx.x xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx x64
+
+
+# ================================================
+# Jupyter Notebooks desde VSCode (Windows 11+ WSL2)
+# Instalar la extensión WSL
+# Instalar la extensión Python
+# Instalar la extensión Jupyter
+
+sudo apt update
+sudo apt install -y python3 python3-pip python3-venv
+python3 --version
+# Salida: Python 3.10.x  (o superior)
+pip3 --version
+# Salida: pip 22.x.x ...
+
+pip3 install --user jupyter jupyterlab
+echo 'export PATH=$HOME/.local/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+echo $PATH
+
+jupyter --version
+# Selected Jupyter core packages...
+# IPython          : 8.x.x
+# ipykernel        : 6.x.x
+# jupyter_client   : 8.x.x
+# jupyter_core     : 5.x.x
+# jupyterlab       : 4.x.x
+# notebook         : 7.x.x
+
+
+# Instalar Coursier en WSL
+curl -fL "https://github.com/coursier/launchers/raw/master/cs-x86_64-pc-linux.gz" | gzip -d > cs
+chmod +x cs
+./cs setup
+# rm $HOME/cs
+
+echo 'export PATH=$HOME/.local/share/coursier/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
+echo $PATH
+cs version
+#cs --version
+# Salida: Coursier 2.x.x
+
+
+
+
+# Instalar el kernel Almond con Scala 3
+# cs install scala:2.13.18 && cs install scalac:2.13.18
+
+cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install --id "scala331" --display-name "Scala 3.3.1"
+cs launch --use-bootstrap almond --scala 2.13.18 -- --install --id "scala21318" --display-name "Scala RC15-2.13.18"
+
+
+# cs launch --use-bootstrap almond:0.14.1 --scala 2.13.16 -- --install --id "scala21316" --display-name "Scala 2.13.16"
+#cs launch --use-bootstrap almond:0.14.0-RC15 --scala 2.13.17 -- --install --id "scalaRC1521317" --display-name "Scala RC15-2.13.17"
+#cs launch --use-bootstrap almond:0.14.0-RC14 --scala 2.13 -- --install --id "scala213" --display-name "Scala 2.13"
+
+
+
+cs launch almond:0.14.0-RC15 --scala 2.13.17 -- --install
+
+
+
+# NO FUNCIONAN 
+
+scala -version
+Scala code runner version: 1.12.4
+Scala version (default): 3.8.3
+
+cs install scala:2.13.18 && cs install scalac:2.13.18
+
+scala -version
+# Scala code runner version 2.13.18 -- Copyright 2002-2025, LAMP/EPFL and Lightbend, Inc. dba Akka
+
+# cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install --global
+# cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install 
+#cs launch --use-bootstrap almond:0.14.0-RC14 --scala 2.13.14 -- --install --id "scala21314" --display-name "Scala 2.13.14"
+#cs launch --use-bootstrap almond:0.14.0-RC14 --scala 2.13.17 -- --install --id "scala21317" --display-name "Scala 2.13.17"
+#cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install --id "scala331" --display-name "Scala 3.3.1"
+#cs launch --use-bootstrap almond --scala 2.13.14 -- --install --id "scala21314" --display-name "Scala 2.13.14"
+#cs launch --fork almond --scala 2.13.14 -- --install --id scala213 --display-name "Scala (2.13.14)"
+
+
+
+jupyter kernelspec list
+# python3    /home/tuNombre/.local/share/jupyter/kernels/python3
+#scala      /home/tuNombre/.local/share/jupyter/kernels/scala
+
+# en Powershell 
+code --remote wsl+Ubuntu-22.04 /home/javier/Curso-Scala/notebooks
+
+import $ivy.`org.apache.spark::spark-sql:4.1.1`
+import org.apache.spark.sql.SparkSession
+
+val spark = SparkSession.builder()
+.appName("MiPrimeraClaseSpark")
+.master("local[*]")
+.getOrCreate()
+println(s"Sesión de Spark iniciada. Versión: ${spark.version}")
+
+val df = spark.createDataFrame(Seq(
+(1, "Scala"), 
+(2, "Spark"), 
+(3, "Jupyter")
+)).toDF("id", "herramienta")
+df.show()
