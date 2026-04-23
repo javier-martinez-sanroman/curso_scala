@@ -81,44 +81,33 @@ chmod +x cs
 ./cs setup
 # rm $HOME/cs
 
-echo 'export PATH=$HOME/.local/share/coursier/bin:$PATH' >> ~/.bashrc
-source ~/.bashrc
-echo $PATH
+# echo 'export PATH=$HOME/.local/share/coursier/bin:$PATH' >> ~/.bashrc
+# source ~/.bashrc
+# echo $PATH
+PATH=/root/.local/share/coursier/bin/:$PATH
 cs version
-#cs --version
 # Salida: Coursier 2.x.x
 
-
-
-
 # Instalar el kernel Almond con Scala 3
-# cs install scala:2.13.18 && cs install scalac:2.13.18
+scala -version
+# Scala code runner version: 1.12.4
+# Scala version (default): 3.8.3
+
+cs install scala:2.13.18 
+cs install scalac:2.13.18
+scala -version
+# Scala code runner version 2.13.18 -- Copyright 2002-2025, LAMP/EPFL and Lightbend, Inc. dba Akka
 
 cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install --id "scala331" --display-name "Scala 3.3.1"
-cs launch --use-bootstrap almond --scala 2.13.18 -- --install --id "scala21318" --display-name "Scala RC15-2.13.18"
-
-
-# cs launch --use-bootstrap almond:0.14.1 --scala 2.13.16 -- --install --id "scala21316" --display-name "Scala 2.13.16"
-#cs launch --use-bootstrap almond:0.14.0-RC15 --scala 2.13.17 -- --install --id "scalaRC1521317" --display-name "Scala RC15-2.13.17"
-#cs launch --use-bootstrap almond:0.14.0-RC14 --scala 2.13 -- --install --id "scala213" --display-name "Scala 2.13"
-
-
-
-cs launch almond:0.14.0-RC15 --scala 2.13.17 -- --install
+cs launch --use-bootstrap almond --scala 2.13.18 -- --install --id "scala21318" --display-name "Scala 2.13.18"
 
 
 
 # NO FUNCIONAN 
-
-scala -version
-Scala code runner version: 1.12.4
-Scala version (default): 3.8.3
-
-cs install scala:2.13.18 && cs install scalac:2.13.18
-
-scala -version
-# Scala code runner version 2.13.18 -- Copyright 2002-2025, LAMP/EPFL and Lightbend, Inc. dba Akka
-
+# cs launch --use-bootstrap almond:0.14.1 --scala 2.13.16 -- --install --id "scala21316" --display-name "Scala 2.13.16"
+#cs launch --use-bootstrap almond:0.14.0-RC15 --scala 2.13.17 -- --install --id "scalaRC1521317" --display-name "Scala RC15-2.13.17"
+#cs launch --use-bootstrap almond:0.14.0-RC14 --scala 2.13 -- --install --id "scala213" --display-name "Scala 2.13"
+#cs launch almond:0.14.0-RC15 --scala 2.13.17 -- --install
 # cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install --global
 # cs launch --use-bootstrap almond:0.14.0-RC14 --scala 3.3.1 -- --install 
 #cs launch --use-bootstrap almond:0.14.0-RC14 --scala 2.13.14 -- --install --id "scala21314" --display-name "Scala 2.13.14"
@@ -128,14 +117,15 @@ scala -version
 #cs launch --fork almond --scala 2.13.14 -- --install --id scala213 --display-name "Scala (2.13.14)"
 
 
-
 jupyter kernelspec list
 # python3    /home/tuNombre/.local/share/jupyter/kernels/python3
 #scala      /home/tuNombre/.local/share/jupyter/kernels/scala
 
+#====================================================================
 # en Powershell 
 code --remote wsl+Ubuntu-22.04 /home/javier/Curso-Scala/notebooks
 
+#====================================================================
 import $ivy.`org.apache.spark::spark-sql:4.1.1`
 import org.apache.spark.sql.SparkSession
 
