@@ -1,0 +1,22 @@
+// jovyan@c3fd9529283d:~/.local/share/jupyter/kernels/scala21318
+{
+  "argv": [
+    "java",
+    "--add-opens=java.base/java.nio=ALL-UNNAMED",
+    "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED",
+    "--add-opens=java.base/java.util=ALL-UNNAMED",
+    "-cp",
+    "/home/jovyan/.local/share/jupyter/kernels/scala21318/launcher.jar",
+    "coursier.bootstrap.launcher.Launcher",
+    "--id",
+    "scala21318",
+    "--display-name",
+    "Scala 2.13.18",
+    "--connection-file",
+    "{connection_file}"
+  ],
+  "display_name": "Scala 2.13.18",
+  "language": "scala"
+}
