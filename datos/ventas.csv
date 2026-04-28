@@ -1,0 +1,9 @@
+id_venta,fecha,producto,categoria,cantidad,precio_unitario,ciudad
+1,2026-04-01,Portátil,Informática,2,850.50,Madrid
+2,2026-04-01,Ratón,Informática,5,18.90,Valencia
+3,2026-04-02,Teclado,Informática,3,45.00,Sevilla
+4,2026-04-02,Monitor,Informática,1,199.99,Madrid
+5,2026-04-03,Silla,Oficina,4,120.00,Barcelona
+6,2026-04-03,Mesa,Oficina,2,250.00,Zaragoza
+7,2026-04-04,Webcam,Informática,6,39.90,Madrid
+8,2026-04-04,Auriculares,Informática,3,59.99,Valencia

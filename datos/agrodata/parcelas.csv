@@ -1,0 +1,16 @@
+id_parcela,provincia,municipio,superficie_ha,cultivo,año_alta,en_produccion,rendimiento_kg_ha
+P001,Sevilla,Carmona,12.5,Naranja,2015,true,28000
+P002,Huelva,Lepe,8.3,Fresa,2018,true,45000
+P003,Almería,Níjar,25.0,Tomate,2012,true,85000
+P004,Sevilla,Écija,6.7,Aceituna,2009,false,3200
+P005,Murcia,Totana,15.2,Limón,2016,true,22000
+P006,Almería,El Ejido,30.1,Pimiento,2014,true,62000
+P007,Huelva,Moguer,9.8,Fresa,2020,true,41000
+P008,Murcia,Lorca,18.4,Melocotón,2011,false,9500
+P009,Sevilla,Utrera,22.0,Naranja,2013,true,31000
+P010,Almería,Vícar,11.6,Pepino,2019,true,74000
+P011,Murcia,Alhama,7.9,Limón,2017,true,20500
+P012,Huelva,Cartaya,14.3,Fresa,2015,true,43000
+P013,Sevilla,Marchena,5.2,Aceituna,2010,false,2900
+P014,Almería,Roquetas,28.7,Tomate,2011,true,88000
+P015,Murcia,Mazarrón,16.5,Pimiento,2018,true,58000

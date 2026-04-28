@@ -1,0 +1,66 @@
+[
+  {
+    "codigo": "NAR",
+    "nombre": "Naranja",
+    "familia": "Citrico",
+    "precio_mercado_euro_kg": 0.45,
+    "demanda_exportacion": "Alta",
+    "certificacion_eco": false
+  },
+  {
+    "codigo": "FRE",
+    "nombre": "Fresa",
+    "familia": "Baya",
+    "precio_mercado_euro_kg": 2.10,
+    "demanda_exportacion": "Muy Alta",
+    "certificacion_eco": true
+  },
+  {
+    "codigo": "TOM",
+    "nombre": "Tomate",
+    "familia": "Hortaliza",
+    "precio_mercado_euro_kg": 0.85,
+    "demanda_exportacion": "Alta",
+    "certificacion_eco": false
+  },
+  {
+    "codigo": "ACE",
+    "nombre": "Aceituna",
+    "familia": "Oleaginosa",
+    "precio_mercado_euro_kg": 0.60,
+    "demanda_exportacion": "Media",
+    "certificacion_eco": true
+  },
+  {
+    "codigo": "LIM",
+    "nombre": "Limón",
+    "familia": "Citrico",
+    "precio_mercado_euro_kg": 0.55,
+    "demanda_exportacion": "Alta",
+    "certificacion_eco": false
+  },
+  {
+    "codigo": "PIM",
+    "nombre": "Pimiento",
+    "familia": "Hortaliza",
+    "precio_mercado_euro_kg": 1.20,
+    "demanda_exportacion": "Muy Alta",
+    "certificacion_eco": true
+  },
+  {
+    "codigo": "PEP",
+    "nombre": "Pepino",
+    "familia": "Hortaliza",
+    "precio_mercado_euro_kg": 0.70,
+    "demanda_exportacion": "Media",
+    "certificacion_eco": false
+  },
+  {
+    "codigo": "MEL",
+    "nombre": "Melocotón",
+    "familia": "Drupa",
+    "precio_mercado_euro_kg": 1.35,
+    "demanda_exportacion": "Media",
+    "certificacion_eco": false
+  }
+]
