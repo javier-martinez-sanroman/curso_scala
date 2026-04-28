@@ -28,10 +28,10 @@ services:
       /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
 
 
-  jupyter-almond:
+  jupyter-scala:
     # image: almondsh/almond:latest
     build: .
-    container_name: jupyter
+    container_name: jupyter-scala
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - SPARK_MASTER=spark://spark-master:7077

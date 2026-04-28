@@ -6,7 +6,10 @@ USER root
 # Instalación de dependencias del sistema y Jupyter
 RUN apt-get update && apt-get install -y \
     git \
+    nano \
     openjdk-17-jdk 
+
+ENV JAVA_TOOL_OPTIONS="--add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED"
 
 # Instalación de Coursier (gestor de dependencias de Scala) y Almond
 # Almond 0.14.1+ es compatible con Scala 2.13, requerida para Spark 4.x
@@ -24,6 +27,8 @@ RUN /usr/local/bin/cs install scalac:2.13.18
 
 USER jovyan
 RUN /usr/local/bin/cs launch --use-bootstrap almond --scala 2.13.18 -- --install --id "scala21318" --display-name "Scala 2.13.18"
+# Machacamos fichero configuración para corregir problema de la libreria KRYO 
+COPY ./kernel.json /home/jovyan/.local/share/jupyter/kernels/scala21318/kernel.json
 
 USER root
 RUN rm -rf /root/.cache/coursier
