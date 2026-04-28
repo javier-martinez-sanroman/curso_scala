@@ -1,0 +1,11 @@
+id,nombre,edad,departamento,salario,activo
+1,Ana García,28,Ingeniería,42000,true
+2,Luis Martínez,34,Marketing,38000,true
+3,Marta López,22,Ingeniería,35000,true
+4,Pedro Ruiz,41,Dirección,75000,true
+5,Carmen Díaz,29,Marketing,36500,true
+6,Jorge Santos,38,Ingeniería,48000,false
+7,Elena Vega,31,RRHH,33000,true
+8,Tomás Gil,45,Dirección,82000,true
+9,Laura Prieto,26,Ingeniería,39000,true
+10,Andrés Mora,33,Marketing,41000,false
