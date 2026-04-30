@@ -1,0 +1,7 @@
+[
+  {"propietario_id": "P01", "nombre": "Laura Sánchez", "ciudad": "Madrid", "antiguedad_anios": 5, "tipo_contrato": "Premium", "especialidades": ["Estudio","Piso"]},
+  {"propietario_id": "P02", "nombre": "Carlos Méndez", "ciudad": "Barcelona", "antiguedad_anios": 3, "tipo_contrato": "Estándar", "especialidades": ["Piso"]},
+  {"propietario_id": "P03", "nombre": "Ana Ferrero", "ciudad": "Sevilla", "antiguedad_anios": 7, "tipo_contrato": "Premium", "especialidades": ["Piso","Ático"]},
+  {"propietario_id": "P04", "nombre": "Javier Ruiz", "ciudad": "Bilbao", "antiguedad_anios": 2, "tipo_contrato": "Estándar", "especialidades": ["Ático","Piso"]},
+  {"propietario_id": "P05", "nombre": "Marta Gil", "ciudad": "Valencia", "antiguedad_anios": 6, "tipo_contrato": "Premium", "especialidades": ["Estudio","Ático"]}
+]
