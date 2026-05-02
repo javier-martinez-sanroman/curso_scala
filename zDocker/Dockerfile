@@ -23,6 +23,9 @@ RUN /opt/conda/bin/pip install --no-cache-dir \
     pandas \
     numpy \
     pyspark \
+    matplotlib \
+    seaborn \ 
+    sklearn \ 
     ipykernel
     
 # Registrar el kernel de Python en el Jupyter de la imagen
