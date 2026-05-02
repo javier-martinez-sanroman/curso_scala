@@ -25,7 +25,11 @@ RUN /opt/conda/bin/pip install --no-cache-dir \
     pyspark \
     matplotlib \
     seaborn \ 
+<<<<<<< HEAD
     # sklearn \ 
+=======
+    sklearn \ 
+>>>>>>> c324f29b9c9ddb0d09b23b7fa8a8d6acda05a8e7
     ipykernel
     
 # Registrar el kernel de Python en el Jupyter de la imagen
