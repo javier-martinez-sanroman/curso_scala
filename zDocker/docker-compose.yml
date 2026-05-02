@@ -52,13 +52,9 @@ networks:
   spark-network:
     driver: bridge
 
-<<<<<<< HEAD
 
 
 # ===========================================================================
-=======
-# ===============================================================================
->>>>>>> c324f29b9c9ddb0d09b23b7fa8a8d6acda05a8e7
   # Contenedor de Jupyter con Kernel de Scala (Almond)
   # jupyter-scala:
   #   image: almondsh/almond:latest
@@ -75,9 +71,5 @@ networks:
   #     - SPARK_MASTER=spark://spark-master:7077
   #   # command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
   #   command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
-<<<<<<< HEAD
 # ===========================================================================
-=======
-# ===============================================================================
->>>>>>> c324f29b9c9ddb0d09b23b7fa8a8d6acda05a8e7
 
