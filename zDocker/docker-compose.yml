@@ -1,3 +1,5 @@
+#  docker-compose up --build -d
+
 services:
   spark-master:
     image: apache/spark:4.1.1-scala2.13-java17-python3-ubuntu
@@ -27,7 +29,6 @@ services:
     command: >
       /opt/spark/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
 
-
   jupyter-scala:
     # image: almondsh/almond:latest
     build: .
@@ -35,6 +36,7 @@ services:
     environment:
       - JUPYTER_ENABLE_LAB=yes
       - SPARK_MASTER=spark://spark-master:7077
+      # - JDK_JAVA_OPTIONS=--add-opens=java.base/java.nio=ALL-UNNAMED --add-opens=java.base/sun.nio.ch=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED
     ports:
       - "8888:8888"
     volumes:
@@ -46,7 +48,13 @@ services:
       - spark-network
     command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''  
 
+networks:
+  spark-network:
+    driver: bridge
 
+
+
+# ===========================================================================
   # Contenedor de Jupyter con Kernel de Scala (Almond)
   # jupyter-scala:
   #   image: almondsh/almond:latest
@@ -63,7 +71,5 @@ services:
   #     - SPARK_MASTER=spark://spark-master:7077
   #   # command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
   #   command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' --NotebookApp.password=''
+# ===========================================================================
 
-networks:
-  spark-network:
-    driver: bridge
